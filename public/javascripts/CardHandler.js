@@ -1,7 +1,9 @@
 const cards = document.getElementsByClassName("cards");
+const items = document.querySelectorAll('.cards');
 const criticScore = document.getElementsByClassName("score");
 const cardInfos = document.getElementsByClassName("cardInfos");
 const scroller = document.getElementById("cardsScroller");
+const carousel = document.querySelector('#cardsScrollerCont');
 const likeButtons = document.getElementsByClassName("likeButton");
 
 var loggedIn = JSON.parse(document.getElementsByTagName("body")[0].getAttribute("data-user"));
@@ -147,59 +149,88 @@ Array.from(likeButtons).forEach(liked => {
 
 // Function for the slider
 
-let pos = 0;
+// let pos = 0;
 
-function updateCarouselPosition() {
-  const cardWidth = parseFloat(getComputedStyle(cards[pos]).width); 
-  const cardMargin = window.innerWidth * 0.05;
+// function updateCarouselPosition() {
+//   const cardWidth = parseFloat(getComputedStyle(cards[pos]).width); 
+//   const cardMargin = window.innerWidth * 0.05;
 
-  const offset = pos * (cardWidth + 2 * cardMargin);
-  const translateX = `calc(50% - (${cardWidth}px / 2 + ${cardMargin}px) - ${offset}px)`;
+//   const offset = pos * (cardWidth + 2 * cardMargin);
+//   const translateX = `calc(50% - (${cardWidth}px / 2 + ${cardMargin}px) - ${offset}px)`;
 
-  scroller.style.transform = `translateX(${translateX})`;
-}
+//   scroller.style.transform = `translateX(${translateX})`;
+// }
 
+// window.addEventListener("resize", ()=> {
+//   updateCarouselPosition();
+// })
 
-window.addEventListener("resize", ()=> {
-  updateCarouselPosition();
-})
+// function slideRight() {
+//   if (pos < Array.from(cards).length - 1) {
+//     cards[pos].classList.remove('mainCard'); 
+//     pos += 1;
+//     updateCarouselPosition(); 
+//     cards[pos].classList.add('mainCard'); 
+//   }
+//   if (pos == Array.from(cards).length - 1) {
+//     document.getElementById("rightArrow").style.display = "none";
+//     if (Array.from(cards).length == 2) {
+//       document.getElementById("leftArrow").style.display = "block";
+//     }
+//   } else {
+//     document.getElementById("leftArrow").style.display = "block";
+//   }
+// }
 
+// function slideLeft() {
+//   if (pos > 0) {
+//     cards[pos].classList.remove('mainCard'); 
+//     pos -= 1;
+//     updateCarouselPosition(); 
+//     cards[pos].classList.add('mainCard');
+//   }
+//   console.log("hey");
+//   if (pos == 0) {
+//     document.getElementById("leftArrow").style.display = "none";
+//     if (Array.from(cards).length == 2) {
+//       document.getElementById("rightArrow").style.display = "block";
+//     }
+//   } else {
+//     document.getElementById("rightArrow").style.display = "block";
+//   }
+// }
 
+carousel.addEventListener('scroll', () => {
+  let currentSnappedItem = null;
+  let minDistance = Infinity;
 
-function slideRight() {
-  if (pos < Array.from(cards).length - 1) {
-    cards[pos].classList.remove('mainCard'); 
-    pos += 1;
-    updateCarouselPosition(); 
-    cards[pos].classList.add('mainCard'); 
-  }
-  if (pos == Array.from(cards).length - 1) {
-    document.getElementById("rightArrow").style.display = "none";
-    if (Array.from(cards).length == 2) {
-      document.getElementById("leftArrow").style.display = "block";
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    const carouselRect = carousel.getBoundingClientRect();
+
+    // Calculate the distance from the center of the carousel
+    const itemCenter = rect.left + rect.width / 2;
+    const carouselCenter = carouselRect.left + carouselRect.width / 2;
+
+    const distance = Math.abs(carouselCenter - itemCenter);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      currentSnappedItem = item;
     }
-  } else {
-    document.getElementById("leftArrow").style.display = "block";
-  }
-}
+  });
 
-function slideLeft() {
-  if (pos > 0) {
-    cards[pos].classList.remove('mainCard'); 
-    pos -= 1;
-    updateCarouselPosition(); 
-    cards[pos].classList.add('mainCard');
+  if (currentSnappedItem) {
+    console.log('Snapped element:', currentSnappedItem);
+    // Add 'active' class to the snapped element and remove it from others
+    items.forEach(item => item.classList.remove('mainCard'));
+    currentSnappedItem.classList.add('mainCard');
   }
-  console.log("hey");
-  if (pos == 0) {
-    document.getElementById("leftArrow").style.display = "none";
-    if (Array.from(cards).length == 2) {
-      document.getElementById("rightArrow").style.display = "block";
-    }
-  } else {
-    document.getElementById("rightArrow").style.display = "block";
-  }
-}
+
+});
+
+
+
 
 
 
