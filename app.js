@@ -150,7 +150,27 @@ app.get('/profile', (req, res) => {
     let query = 'SELECT name, surname, role, email FROM users WHERE id = ?;';
     db.query(query, [user_id], (err, results)=> {
       if (err) throw err;
-      res.render("profile", {user : user_id, role : results[0].role, name : results[0].name, surname : results[0].surname, mail : results[0].email});
+      if (results[0].role == "admin") {
+        db.query('SELECT COUNT(*) AS count FROM wp_data;', (err, res1)=> {
+          if(err) throw err;
+          game_count = res1;
+          db.query('SELECT COUNT(*) AS count FROM users;', (err, res2)=> {
+            if(err) throw err;
+            user_count = res2;
+            db.query('SELECT COUNT(*) AS count FROM favorites;', (err, res3)=> {
+              if(err) throw err;
+              fav_count = res3;
+              db.query('SELECT id, name, surname, email FROM users LIMIT 10', (err, res4)=> {
+                if (err) throw err;
+                user_list = res4;
+                res.render("profile", {user : user_id, role : results[0].role, game_c : res1[0].count, user_c : res2[0].count, fav_c: res3[0].count, u_list : user_list});
+              });
+            });
+          });
+        });
+      } else {
+        res.render("profile", {user : user_id, role : results[0].role, name : results[0].name, surname : results[0].surname, mail : results[0].email});
+      }
     })
   } else {
     console.log("user id is null");
@@ -175,9 +195,9 @@ app.get("/retrieveId", (req, res)=> {
   return res.status(200).json({user : user_id});
 });
 
-app.get("/logout", (req, res)=> {
+app.get("/signout", (req, res)=> {
   user_id = null;
-  res.redirect("/");
+  res.redirect("/profile");
 
 })
 
@@ -268,7 +288,6 @@ app.post("/signup", (req, res) => {
   const mailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
   const nameRegex = /^[a-zA-Z]+$/;
   const {name, surname, mail , password} = req.body;
-  console.log(mail);
   if (nameRegex.test(name) && mailRegex.test(mail)) {
     let query = 'Select * FROM users WHERE email = ?';
     db.query(query, [mail], (err, results)=> {
@@ -374,6 +393,44 @@ app.post("/updateUser", (req, res)=> {
   }
 });
 
+app.post("/searchUser", (req, res)=> {
+  const {search} = req.body;
+  let query = "";
+  let searchString = "";
+  if (search == "") {
+    searchString= "";
+    query = 'SELECT id, name, surname, email FROM users LIMIT 10;';
+  } else {
+    searchString = `%${search}`;
+    query= "SELECT id, name, surname, email FROM users WHERE name LIKE ?;"
+  }
+  db.query(query, [searchString], (err, results)=> {
+    if (err) throw err;
+    let user_list = results;
+    query = 'SELECT name, surname, role, email FROM users WHERE id = ?;';
+    db.query(query, [user_id], (err, results)=> {
+      if (err) throw err;
+      if (results[0].role == "admin") {
+        db.query('SELECT COUNT(*) AS count FROM wp_data;', (err, res1)=> {
+          if(err) throw err;
+          game_count = res1;
+          db.query('SELECT COUNT(*) AS count FROM users;', (err, res2)=> {
+            if(err) throw err;
+            user_count = res2;
+            db.query('SELECT COUNT(*) AS count FROM favorites;', (err, res3)=> {
+              if(err) throw err;
+              fav_count = res3;
+              return res.status(200).json({success : true,  u_list : user_list});
+            });
+          });
+        });
+      } else {
+        return res.status(400).json({success : false, u_list : user_list});
+      }
+    })
+  })
+});
+
 // Delete events
 
 app.delete('/removefavorite', (req, res) => {
@@ -402,6 +459,23 @@ app.delete("/deleteAccountUser", (req, res) => {
     return res.status(400).json({success : false});
   }
 });
+
+app.delete("/deleteAccountAdmin", (req, res)=> {
+  const {id} = req.body;
+  if (id != null && id!= 1) { // Different from user id
+    let query = 'DELETE FROM users WHERE id = ?;';
+    db.query(query, [id], (err, results) => {
+      if(err) throw err;
+      console.log("User deleted");
+      return res.status(200).json({success : true});
+    });
+  } else {
+    return res.status(400).json({success : false});
+  }
+});
+
+
+
 
 
 

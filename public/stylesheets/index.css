@@ -1,3 +1,9 @@
+:root {
+  --fs-text : calc(0.8rem + 0.8vw);
+  --main-purple : rgb(108, 0, 108);
+  --main-pink : rgb(208, 1, 84);
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -25,7 +31,7 @@ header {
 
 label {
   font-weight: 400;
-  color : white;
+  color : whitesmoke;
   display: block;
   margin-bottom: 10px;
   font-size: calc(0.5rem + 1.5vw);
@@ -55,14 +61,13 @@ select option {
 #select-duration {
   width : 25vw;
   height : 50px;
-  font-size: calc(0.8rem + 0.8vw);
+  font-size: var(--fs-text);
   border-radius: 20px 0 0 20px;
   padding: 0;
   border : none;
   background-color: rgb(26, 26, 26);
   color: rgb(226, 226, 226) ;
   text-align: center;
-  font-family: "Roboto Mono", monospace;
   font-weight: 200;
   transition: all 100ms ease-in;
 }
@@ -71,13 +76,12 @@ select option {
   width : 10vw;
   max-width: 150px;
   min-width: 80px;
-  font-size: calc(0.8rem + 0.8vw);
+  font-size: var(--fs-text);
   height : 50px;
   border-radius:  0 20px 20px 0;
   border : none;
   background-color: rgb(26, 26, 26);
   color: rgb(226, 226, 226) ;
-  font-family: "Roboto Mono", monospace;
   font-weight: 200;
   transition: all 100ms ease-in;
 }
@@ -92,7 +96,7 @@ select option {
 
 #select-genre {
   height : 50px;
-  font-size: calc(0.8rem + 0.8vw);
+  font-size: var(--fs-text);
   background-color: rgb(26, 26, 26);
   color: rgb(226, 226, 226) ;
   border-radius: 20px;
@@ -114,7 +118,7 @@ select option {
 }
 
 input[type = "submit"] {
-  font-size: calc(0.8rem + 0.8vw);
+  font-size: var(--fs-text);
   margin-top: 40px;
   color: rgb(226, 226, 226) ;
   background-color: rgb(108, 0, 108);
@@ -161,8 +165,7 @@ main {
 }
 
 #overlay h1 {
-  color : white;
-  font-family: "Roboto Mono", monospace;
+  color : whitesmoke;
   font-size: calc(1rem + 4vw);
   font-weight: 500;
 }
@@ -174,7 +177,7 @@ main {
   background: radial-gradient(rgb(56, 56, 56) 0,rgba(56, 56, 56, 1) 50%,  rgba(56, 56, 56, 0)51%);
   border-radius: 100px;
   padding: 0px 12px 3px 12px;
-  color: white;
+  color: whitesmoke;
   position : absolute;
   right : 3px;
   top : 2px;
@@ -249,7 +252,7 @@ main:has(#advancedButton:checked) #advanced {
 #select-results, #select-timeVariation {
   width : 25vw;
   height : 50px;
-  font-size: calc(0.8rem + 0.8vw);
+  font-size: var(--fs-text);
   border-radius: 20px;
   padding: 0;
   margin : 15px 0 25px 0;
@@ -257,7 +260,6 @@ main:has(#advancedButton:checked) #advanced {
   background-color: rgb(26, 26, 26);
   color: rgb(226, 226, 226) ;
   text-align: center;
-  font-family: "Roboto Mono", monospace;
   font-weight: 200;
   transition: all 100ms ease-in;
 }
@@ -269,7 +271,7 @@ main:has(#advancedButton:checked) #advanced {
 }
 
 
-#main-form {
+#main-form,  #backgroundContainer{
   display : flex;
   flex-direction: column;
   justify-content: center;
@@ -277,14 +279,10 @@ main:has(#advancedButton:checked) #advanced {
 }
 
 #backgroundContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
-@media (max-width : 1000px) {
+@media (min-width: 501px) and (max-width : 1000px) {
 
   #overlay {
     justify-content: center;
@@ -315,7 +313,7 @@ main:has(#advancedButton:checked) #advanced {
   }
 
   #overlay h1 {
-    font-size: calc(1.3rem);
+    font-size: 1.3rem;
     margin-bottom : 20px;
   }
 
