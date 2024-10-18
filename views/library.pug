@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+    title Favorites
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/stylesheets/global.css")
+    link(rel="stylesheet" href="/stylesheets/favorites.css")
+  body
+    header 
+      a(href = "./")#homeButton what should i play 
+      #profileCont 
+        a(href = "./library")#libraryButton
+          svg(viewbox='0 0 512.000000 512.000000')
+            g(transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)' fill='currentColor' stroke = 'currentColor')
+              path(d='M1175 4806 c-208 -31 -377 -96 -560 -215 -102 -66 -280 -247 -355\
+              -361 -267 -408 -332 -927 -173 -1400 95 -283 278 -563 584 -896 226 -246 438\
+              -439 1286 -1166 561 -483 556 -479 637 -464 19 4 49 19 68 34 69 55 1039 891\
+              1208 1041 584 517 880 857 1064 1220 147 290 205 583 178 889 -36 390 -173\
+              696 -426 947 -177 176 -371 287 -601 344 -369 91 -738 24 -1038 -190 -161\
+              -114 -339 -312 -443 -491 -21 -37 -41 -68 -44 -68 -3 0 -23 31 -44 68 -104\
+              179 -282 377 -443 491 -90 64 -228 136 -318 166 -168 56 -405 77 -580 51z')
+        a(href = "./profile")#profileButton
+          svg(viewbox='0 0 512.000000 512.000000')
+            g(transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)' fill='currentColor' stroke='none')
+              path(d='M2370 5113 c-371 -35 -653 -114 -961 -269 -245 -122 -444 -268 -655\
+              -478 -224 -225 -366 -423 -500 -701 -158 -326 -237 -650 -251 -1020 -15 -426\
+              73 -832 263 -1214 133 -269 271 -459 488 -677 221 -220 412 -357 681 -489 188\
+              -92 309 -137 500 -185 196 -49 343 -70 545 -77 580 -20 1143 158 1615 511 138\
+              103 379 339 477 466 496 644 663 1434 468 2210 -59 235 -182 525 -306 720\
+              -197 310 -472 591 -774 791 -130 87 -410 226 -550 274 -204 70 -413 115 -625\
+              135 -102 9 -333 11 -415 3z m386 -1043 c84 -22 175 -66 259 -125 138 -97 242\
+              -254 291 -435 24 -90 24 -272 0 -365 -105 -400 -498 -651 -894 -569 -251 51\
+              -464 226 -561 459 -132 317 -30 696 243 901 195 147 427 193 662 134z m106\
+              -2045 c446 -68 836 -268 1161 -597 75 -76 127 -137 127 -148 0 -11 -52 -72\
+              -127 -148 -332 -335 -735 -539 -1193 -603 -122 -17 -418 -17 -540 0 -466 65\
+              -904 291 -1224 633 -53 57 -96 109 -96 118 0 22 156 187 261 276 301 255 694\
+              430 1060 473 52 6 110 13 129 15 67 8 345 -4 442 -19z')
+        a(href = "./profile")#loginButton Login / Sign up
+    main 
+      svg#edit-icon(height='24px' viewbox='0 -960 960 960' width='24px' fill='currentColor' onclick = "toggleEdit()")
+        path(d='M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z')
+      svg#trash-icon(x='0px' y='0px' width='26' height='26' viewbox='0 0 26 26' fill='currentColor' onclick = "toggleEdit()")
+        path(d='M 11 -0.03125 C 10.164063 -0.03125 9.34375 0.132813 8.75 0.71875 C 8.15625 1.304688 7.96875 2.136719 7.96875 3 L 4 3 C 3.449219 3 3 3.449219 3 4 L 2 4 L 2 6 L 24 6 L 24 4 L 23 4 C 23 3.449219 22.550781 3 22 3 L 18.03125 3 C 18.03125 2.136719 17.84375 1.304688 17.25 0.71875 C 16.65625 0.132813 15.835938 -0.03125 15 -0.03125 Z M 11 2.03125 L 15 2.03125 C 15.546875 2.03125 15.71875 2.160156 15.78125 2.21875 C 15.84375 2.277344 15.96875 2.441406 15.96875 3 L 10.03125 3 C 10.03125 2.441406 10.15625 2.277344 10.21875 2.21875 C 10.28125 2.160156 10.453125 2.03125 11 2.03125 Z M 4 7 L 4 23 C 4 24.652344 5.347656 26 7 26 L 19 26 C 20.652344 26 22 24.652344 22 23 L 22 7 Z M 8 10 L 10 10 L 10 22 L 8 22 Z M 12 10 L 14 10 L 14 22 L 12 22 Z M 16 10 L 18 10 L 18 22 L 16 22 Z')
+
+      #card-section
+        if user != null
+          #card-scrollable 
+            if cards && cards.length > 0
+              each card in cards
+                .fav-card(data = JSON.stringify(card))
+                  input(type = "checkbox").deleteButton
+                  .fav_cover
+            else
+              p You don't have any favorite games yet 
+      #display-card
+        #main-card
+          #card-img-container
+           #card-img 
+          h3#game-name Titre 
+          #main-card-infos
+            #infosBubblesCont 
+              p.infoBubble test1
+              p.infoBubble test2
+              p.infoBubble test3
+              p.infoBubble test4
+              p.infoBubble test5
+            p#storyline Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident aut quam libero doloremque labore corporis fugit hic praesentium dolorem voluptatem saepe, obcaecati tenetur deserunt optio laudantium dignissimos dicta sunt perspiciatis.Ad a facere consectetur distinctio iste atque incidunt vel fuga! Hic modi alias consequatur maxime! Tempora dignissimos minima quibusdam facere sequi doloremque accusamus, nam expedita molestias, labore nemo, eum reprehenderit?Voluptatum animi, reprehenderit illo impedit voluptates mollitia provident similique perspiciatis dolorem soluta repellendus sunt atque, sed dolores quae perferendis quod, itaque ad nulla laudantium ducimus optio et dicta. Dolore, quae!
+    script(src="./javascripts/global.js")
+    script(src="./javascripts/favorites.js") 
+        

@@ -1,0 +1,488 @@
+#normalHeaderCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height : 50px;
+  color: whitesmoke;
+  width : 100vw;
+  background-color: rgb(69, 0, 69);
+  transition: all 150ms ease-in;
+  opacity: 0.3;
+}
+
+#normalHeaderCont:hover {
+  opacity: 1;
+}
+
+header {
+  background-color: rgba(0,0,0,0);
+  opacity: 1;
+}
+
+#loginHeaderCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width : 100vw;
+}
+
+body {
+  overflow: hidden;
+  background-color: rgb(0,0,3);
+}
+
+h1 {
+  margin: 0;
+  color: white;
+  text-align: center;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+}
+
+form {
+  display :flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  height : 50px;
+  background-color: rgb(26, 26, 26);
+  color: rgb(226, 226, 226) ;
+  border-radius: 20px;
+  border : solid 1px rgb(30, 30, 30);
+  padding: 0 20px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 200;
+  transition: all 100ms ease-in;
+}
+
+input:hover {
+  border : solid 1px rgb(131, 0, 53);
+  cursor: pointer;
+}
+
+input:focus {
+  box-shadow: 0 0 10px rgb(131, 0, 53);
+  border: solid 1px rgb(131, 0, 53) ;
+  outline:none;
+}
+
+#backgroundContainer {
+  z-index: -1;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+  display: flex;
+  padding-top: 15%;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#overlay h1 {
+  color : white;
+  font-family: "Roboto Mono", monospace;
+  font-size: 5rem;
+  font-weight: 500;
+}
+
+main {
+  min-width: 250px;
+  padding: 20px 40px 10px 40px;
+  position: relative;
+  background-color: rgb(8, 2, 13);
+  box-shadow: 0 8px 32px 0 rgba(0, 1, 14, 0.521);
+  border-radius: 0 20px 20px 20px;
+  border: 1px solid rgb(131, 0, 53);
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+}
+
+#optionSlider {
+  position: absolute;
+  background-color: rgb(8, 2, 13);
+  box-shadow: 0 8px 32px 0 rgba(0, 1, 14, 0.421);
+  top : -62px;
+  left : -1px;
+  height : 60px;
+  width : 50%;
+  border-top: 1px solid rgb(131, 0, 53);
+  border-left:  1px solid rgb(131, 0, 53);
+  border-right:  1px solid rgb(131, 0, 53);
+  border-bottom: 1px solid rgb(8, 2, 13) ;
+  border-radius: 20px 20px 0 0;
+  transition: all 300ms ease-in;
+  
+}
+
+#textContainer {
+  position: absolute;
+  width: 100%;
+  height : 60px;
+  display: flex;
+  color: white;
+  top : -60px;
+  left : 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+#login, #signup {
+  font-size: calc(0.6rem + 0.6vw);
+  width : 50%;
+  text-align: center;
+  height : 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 150ms ease-in;
+  border-radius: 10px;
+  padding: -10px;
+  
+}
+
+#login:hover, #signup:hover {
+  cursor: pointer;
+}
+
+.active {
+  color: rgba(245, 245, 245, 0.3);
+}
+
+.active:hover {
+  background-color: rgba(131, 0, 53, 0.4);
+  
+}
+
+label {
+  color : white;
+  margin : 20px 0 10px 0;
+  font-size: 1rem;
+}
+
+.loginInputContainer {
+  width: 100%;
+  height: 100%;
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  color : whitesmoke;
+}
+
+#mailLogin, #passwordLogin {
+  font-size: calc(0.5rem + 0.5vw);
+  width : 20vw;
+  min-width: 255px;
+}
+
+#mailLogin:invalid, #mailSignup:invalid {
+  background-color: rgb(105, 0, 0);
+}
+
+#submitLogin, #submitSignup {
+  margin : 20px 20px 10px 20px;
+  font-size: calc(0.6rem + 0.6vw);
+  padding: 10px 20px;
+  transition: all 150ms ease-in;
+}
+
+#submitLogin {
+  max-width: 100px;
+}
+
+#submitSignup {
+  max-width: 120px;
+}
+
+#submitLogin:hover, #submitSignup:hover {
+  background-color: rgb(131, 0, 53);
+  transform: scale(1.05);
+}
+
+#signupForm {
+  display : none;
+  justify-content: center;
+  align-items: center;
+}
+
+#topFormCont {
+  width: calc(20vw + 40px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 295px;
+}
+
+.topFormInput {
+  display : flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  width : 48%
+  
+}
+#nameInput, #surnameInput {
+  width : calc(100% - 40px);
+  font-size: calc(0.5rem + 0.5vw);
+  min-width: 100px;
+}
+
+#mailSignup, #passwordSignup {
+  font-size: 1rem;
+  width : 20vw;
+  min-width: 255px;
+}
+
+.pageContainer {
+  width : 100%;
+  height : 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pageContainer h1 {
+  font-size : calc(1.5rem + 1.25vw);
+  margin-bottom: 40px;
+}
+
+.LogOut {
+  margin-top: 20px;
+  padding : 15px 20px;
+  color: rgb(148 58 170) !important;
+  border : 1px solid rgb(148 58 170);
+  border-radius: 20px;
+  transition: all 150ms ease-in;
+}
+
+.LogOut:hover {
+  cursor: pointer;
+  color: black !important;
+  transform: scale(1.1);
+  background-color: rgb(148 58 170);
+}
+
+#deleteButton {
+  position: absolute;
+  bottom : 60px;
+  padding : 15px 20px;
+  color: rgb(171, 1, 1) !important;
+  border : 1px solid rgb(173, 1, 1);
+  border-radius: 20px;
+  transition: all 150ms ease-in;
+}
+
+#deleteButton:hover {
+  cursor: pointer;
+  color: black !important;
+  transform: scale(1.1);
+  background-color: rgb(171, 1, 1);
+}
+
+#userData {
+  position: relative;
+  min-width: 250px;
+  padding: 30px 40px 10px 40px;
+  position: relative;
+  background-color: rgb(8, 2, 13);
+  border-radius: 20px;
+  border: 1px solid rgb(69 25 136);
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  color: whitesmoke;
+  font-size: calc(0.8rem + 0.2vw);
+}
+
+#edit-icon {
+  position: absolute;
+  height : 20px;
+  top : 10px;
+  right : 10px;
+  color : rgb(88, 73, 88);
+  transition: all 150ms ease-in;
+}
+
+#edit-icon:hover {
+  transform: scale(1.1);
+  color :rgb(148 58 170);
+  cursor: pointer; 
+}
+
+#userIdentityCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 295px;
+  width : 100%;
+}
+
+#userIdentityCont p {
+  display : flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  text-wrap: nowrap;
+
+}
+
+#userLogsCont {
+  width: 100%;
+  height: 100%;
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.userRows {
+  display :flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  display: none;
+}
+
+.userBlock {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width : 100%;
+}
+
+.userBlock:nth-child(2) {
+  margin-left: 10px;
+}
+
+.userBlock p {
+  margin : 0 5px 0 0;
+}
+
+#saveButton {
+  background-color:rgb(148 58 170) ;
+  border-radius: 15px;
+  padding : 8px 12px;
+  transition: all 150ms ease-in;
+  display: none;
+}
+
+#saveButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#userData label {
+  font-size: calc(0.8rem + 0.2vw);
+}
+
+#userLogsCont input[type = "password"], #userIdentityCont input[type = "text"] {
+  height : 35px;
+  border-radius: 10px;
+}
+
+#nameUserInput, #surnameUserInput {
+  max-width: 80px;
+  display: none;
+}
+
+.happyDino {
+  position: absolute;
+  height : 80%;
+  image-rendering: pixelated;
+  transform:scaleX(-1);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.happyDino:first-child {
+  transform:scaleX(-1) translateX(85%);
+}
+
+.happyDino:nth-child(2) {
+  transform:scaleX(-1) translateX(-85%);
+}
+
+
+@media (max-width : 500px) {
+  #overlay {
+    justify-content: center;
+    padding-top : 0%;
+    background: linear-gradient(to top, rgb(254, 3, 162), purple 4%, black 25%);
+  }
+
+  form {
+    width: 100%;
+  }
+
+  main {
+    padding: 20px 20px 20px 20px;
+  }
+
+  #userData, .editable #userIdentityCont, .editable .userBlock, .userRows, .editable #userLogsCont{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .editable .userBlock{
+    margin-bottom: 15px;
+  }
+
+  .editable .userBlock p {
+    margin-bottom: 5px;
+  }
+
+  .editable #userMail {
+    margin: 0;
+  }
+
+
+  #userData {
+    padding: 15px 20px 5px 20px;
+  }
+
+  #edit-icon {
+    top : calc(50% - 10px);
+  }
+}
+
+@media (min-width : 501px) and (max-width : 650px) {
+  #userData {
+    padding: 15px 20px 5px 20px;
+  }
+
+  #edit-icon {
+    top : calc(50% - 10px);
+  }
+
+  #overlay {
+    padding-top : 35%;
+  }
+}
+
+@media(min-width : 651px) and (max-width : 950px) {
+  #overlay {
+    padding-top : 30%;
+  }
+}
+
+

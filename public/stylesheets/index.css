@@ -1,0 +1,343 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow:hidden;
+  position: relative;
+}
+
+header {
+  top : 0px;
+  left: 0px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0) !important;
+  z-index: 2;
+  opacity: 0.8 !important;
+  justify-content: flex-end !important;
+}
+
+#profileCont {
+  padding-right: 10px;
+}
+
+
+
+label {
+  font-weight: 400;
+  color : white;
+  display: block;
+  margin-bottom: 10px;
+  font-size: calc(0.5rem + 1.5vw);
+}
+
+select option { 
+  font-size: 1rem;
+}
+
+#select-duration-container {
+  display : flex;
+  margin-bottom: 50px;
+  background-color: rgb(30, 30, 30);
+  padding: 1px;
+  border-radius: 20px;
+}
+
+#select-duration-container:hover {
+  background-color: rgb(99, 0, 99);
+}
+
+#select-duration-container:has(#select-duration:focus), #select-duration-container:has(#select-unity:focus) {
+  box-shadow: 0 0 10px rgb(108, 0, 108);
+  background-color: rgb(99, 0, 99);
+}
+
+#select-duration {
+  width : 25vw;
+  height : 50px;
+  font-size: calc(0.8rem + 0.8vw);
+  border-radius: 20px 0 0 20px;
+  padding: 0;
+  border : none;
+  background-color: rgb(26, 26, 26);
+  color: rgb(226, 226, 226) ;
+  text-align: center;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 200;
+  transition: all 100ms ease-in;
+}
+
+#select-unity {
+  width : 10vw;
+  max-width: 150px;
+  min-width: 80px;
+  font-size: calc(0.8rem + 0.8vw);
+  height : 50px;
+  border-radius:  0 20px 20px 0;
+  border : none;
+  background-color: rgb(26, 26, 26);
+  color: rgb(226, 226, 226) ;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 200;
+  transition: all 100ms ease-in;
+}
+
+#select-unity:hover {
+  cursor: pointer;
+}
+
+#select-duration:focus, #select-unity:focus{
+  outline:none;
+}
+
+#select-genre {
+  height : 50px;
+  font-size: calc(0.8rem + 0.8vw);
+  background-color: rgb(26, 26, 26);
+  color: rgb(226, 226, 226) ;
+  border-radius: 20px;
+  border : solid 1px rgb(30, 30, 30);
+  padding: 0 20px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 200;
+  transition: all 100ms ease-in;
+}
+
+#select-genre:hover {
+  border : solid 1px rgb(99, 0, 99);
+  cursor: pointer;
+}
+
+#select-genre:focus {
+  box-shadow: 0 0 10px rgb(108, 0, 108);
+  border: solid 1px rgb(99, 0, 99) ;
+}
+
+input[type = "submit"] {
+  font-size: calc(0.8rem + 0.8vw);
+  margin-top: 40px;
+  color: rgb(226, 226, 226) ;
+  background-color: rgb(108, 0, 108);
+  border: none;
+  padding: 15px 20px;
+  border-radius: 25px;
+  transition: all 100ms ease-in;
+}
+
+input[type = "submit"]:hover {
+  transform: scale(105%);
+  box-shadow: 0 0 15px rgb(108, 0, 108);
+  cursor: pointer;
+}
+
+main {
+  position: relative;
+  padding : 50px 70px;
+  background: rgba(10, 0, 16, 0.617);
+  box-shadow: 0 8px 32px 0 rgba(0, 1, 14, 0.521);
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
+  border-radius: 10px;
+  border: 1px solid rgba(5, 0, 0, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;  
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#overlay h1 {
+  color : white;
+  font-family: "Roboto Mono", monospace;
+  font-size: calc(1rem + 4vw);
+  font-weight: 500;
+}
+
+
+#plusSymbol  {
+  margin: 0;
+  font-size: 2rem;
+  background: radial-gradient(rgb(56, 56, 56) 0,rgba(56, 56, 56, 1) 50%,  rgba(56, 56, 56, 0)51%);
+  border-radius: 100px;
+  padding: 0px 12px 3px 12px;
+  color: white;
+  position : absolute;
+  right : 3px;
+  top : 2px;
+  opacity : 0.3;
+  z-index: 2;
+  transition: all 150ms ease-in;
+}
+
+#plusSymbol:hover {
+  cursor: pointer;
+}
+
+
+
+main:has(#advancedButton:hover) #plusSymbol, main:has(#advancedButton:checked) #plusSymbol{
+  transform: scale(1.1);
+  opacity: 0.6;
+}
+
+main:has(#advancedButton:checked) #plusSymbol {
+  transform: rotate(-135deg);
+}
+
+#advancedButton {
+  opacity : 0;
+  top : 10px;
+  right : 10px;
+  position: absolute;
+  width : 22px;
+  aspect-ratio: 1/1;
+  z-index: 3;
+}
+
+#advancedButton:hover {
+  cursor: pointer;
+}
+
+#advanced {
+  z-index: -1;
+  opacity: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  height : 100%;
+  width : 100%;
+  position: absolute;
+  background: rgb(10, 0, 16);
+  border-radius: 10px;
+  transition: all 200ms ease-in;
+}
+
+#advanced h2 {
+  margin: 20px 0 40px 0;
+  color: rgb(217, 3, 217);
+  font-size: calc(1rem + 1vw);
+  text-align: center;
+  padding: 20px;
+  text-shadow: 
+    0 0 20px rgba(255, 0, 255, 0.1), 
+    0 0 30px rgb(255, 0, 255, 0.3), 
+    0 0 40px rgb(255, 0, 255, 0.7), 
+    0 0 50px rgb(255, 0, 255, 0.9), 
+    0 0 60px rgb(255, 0, 255, 1);
+}
+
+main:has(#advancedButton:checked) #advanced {
+  opacity: 1;
+  z-index: 1;
+}
+
+#select-results, #select-timeVariation {
+  width : 25vw;
+  height : 50px;
+  font-size: calc(0.8rem + 0.8vw);
+  border-radius: 20px;
+  padding: 0;
+  margin : 15px 0 25px 0;
+  border: 1px solid rgba(5, 0, 0, 0.18);
+  background-color: rgb(26, 26, 26);
+  color: rgb(226, 226, 226) ;
+  text-align: center;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 200;
+  transition: all 100ms ease-in;
+}
+
+#select-results:focus, #select-timeVariation:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgb(108, 0, 108);
+  border:1px solid rgb(99, 0, 99);
+}
+
+
+#main-form {
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#backgroundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+@media (max-width : 1000px) {
+
+  #overlay {
+    justify-content: center;
+  }
+
+  #select-duration-container {
+    margin-bottom: 20px;
+  }
+
+  #advanced h2 {
+    margin : 10px 0;
+  }
+
+  input[type="submit"] {
+    margin-top : 20px;
+  }
+}
+
+@media (max-width : 500px) {
+
+  main {
+    padding: 20px 30px;
+  }
+
+  #overlay {
+    justify-content: center;
+    background: linear-gradient(to top, rgb(254, 3, 162), purple 4%, black 25%);
+  }
+
+  #overlay h1 {
+    font-size: calc(1.3rem);
+    margin-bottom : 20px;
+  }
+
+  #select-duration-container {
+    margin-bottom: 20px;
+  }
+
+  #advanced h2 {
+    margin : 10px 0;
+  }
+
+  input[type="submit"] {
+    margin-top : 20px;
+    height : 35px;
+    padding: 5px 10px;
+  }
+
+  #plusSymbol  {
+    font-size: 1rem;
+  }
+
+  #select-genre, #select-unity, #select-duration {
+    height : 35px;
+  }
+}
