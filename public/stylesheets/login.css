@@ -423,47 +423,7 @@ label {
 }
 
 
-@media (max-width : 500px) {
-  #overlay {
-    justify-content: center;
-    padding-top : 0%;
-    background: linear-gradient(to top, rgb(254, 3, 162), purple 4%, black 25%);
-  }
 
-  form {
-    width: 100%;
-  }
-
-  main {
-    padding: 20px 20px 20px 20px;
-  }
-
-  #userData, .editable #userIdentityCont, .editable .userBlock, .userRows, .editable #userLogsCont{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .editable .userBlock{
-    margin-bottom: 15px;
-  }
-
-  .editable .userBlock p {
-    margin-bottom: 5px;
-  }
-
-  .editable #userMail {
-    margin: 0;
-  }
-
-
-  #userData {
-    padding: 15px 20px 5px 20px;
-  }
-
-  #edit-icon {
-    top : calc(50% - 10px);
-  }
-}
 
 #adminData {
   display : flex;
@@ -564,6 +524,7 @@ label {
 
 #resultsContainer p {
   margin-left:10px;
+  font-size: calc(0.6rem + 0.4vw);
 }
 
 
@@ -620,15 +581,20 @@ label {
 
 .widget p {
   margin: 0;
+  font-size: calc(0.5rem + 0.5vw);
 }
 
 .variable {
-  font-size: 3rem;
+  font-size: 3rem !important;
   font-weight: 800;
 }
 
 .widget:first-child .variable{
   color: rgb(69 25 136);
+}
+
+.widget:nth-child(2) {
+  margin: 0 10px;
 }
 
 .widget:nth-child(2) .variable{
@@ -639,7 +605,47 @@ label {
   color: rgb(152 65 174);
 }
 
+@media (max-width : 500px) {
+  #overlay {
+    justify-content: center;
+    padding-top : 0%;
+    background: linear-gradient(to top, rgb(254, 3, 162), purple 4%, black 25%);
+  }
 
+  form {
+    width: 100%;
+  }
+
+  main {
+    padding: 20px 20px 20px 20px;
+  }
+
+  #userData, .editable #userIdentityCont, .editable .userBlock, .userRows, .editable #userLogsCont{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .editable .userBlock{
+    margin-bottom: 15px;
+  }
+
+  .editable .userBlock p {
+    margin-bottom: 5px;
+  }
+
+  .editable #userMail {
+    margin: 0;
+  }
+
+
+  #userData {
+    padding: 15px 20px 5px 20px;
+  }
+
+  #edit-icon {
+    top : calc(50% - 10px);
+  }
+}
 
 
 @media (min-width : 501px) and (max-width : 650px) {
@@ -660,6 +666,59 @@ label {
   #overlay {
     padding-top : 30%;
   }
+}
+
+@media (max-width : 850px) {
+  #adminData {
+    flex-direction: column;
+    max-width: 450px;
+  }
+
+  #widgetCol {
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .variable {
+    font-size: calc(2rem + 1vw) !important;
+  }
+
+  #searchCol {
+    width: 100%;
+  }
+
+  #searchBar {
+    margin: 0;
+    width: 100%;
+  }
+
+  #searchInput {
+    width : 100%;
+  }
+
+  #searchIcon {
+    width : 100%;
+  }
+
+  h1 {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width : 600px) {
+  #adminData {
+    width: 80vw;
+  }
+  .variable {
+    font-size: calc(1rem + 2vw) !important;
+  }
+
+  .widget {
+    width: 30%;
+  }
+
 }
 
 

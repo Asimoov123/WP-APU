@@ -17,9 +17,13 @@ h1 {
 #cardsScrollerCont {
   height : 500px;
   position: relative;
-  width : 100vw;
+  max-width : 100vw;
   overflow: scroll;
   scroll-snap-type: x mandatory;
+
+  /* Firefox only */
+  scrollbar-width:thin;
+  scrollbar-color: #45004500 #e0e0e000;
   
 }
 
@@ -31,49 +35,11 @@ h1 {
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: row;
+  width: fit-content; 
+  padding: 0 50%;
   
-  padding-left: 50%;
-  padding-right: 50%;
   /* transform: translateX(calc(50% - (calc(8vw + 200px)/2) - 5vw)); */
   transition: all 150ms ease-in;
-}
-
-.btn {
-  position: absolute;
-  top : calc(50% - 30px);
-  height : 15px;
-  width : 15px;
-  border-left : solid 8px #696969;
-  border-top : solid 8px #696969;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 150ms ease-in;
-  opacity: 0.6;
-}
-
-#leftArrow:hover {
-  transform: scale(1.2) rotate(-45deg);
-  opacity: 1;
-}
-
-#rightArrow:hover {
-  transform: scale(1.2)  rotate(135deg);
-  opacity: 1;
-}
-
-.btn.inactive {
-  border-color : #282828;
-}
-
-.btn:first-of-type {
-  transform: rotate(-45deg);
-  left : calc(50vw - calc(100px + 4vw) - 40px);
-  display: none;
-}
-
-.btn:last-of-type {
-  transform: rotate(135deg);
-  right : calc(50vw - calc(100px + 4vw) - 40px);
 }
 
 .cards {
@@ -93,6 +59,55 @@ h1 {
   transition: all 150ms ease-in;
   scroll-snap-align: center;
   scroll-snap-stop: always;
+}
+
+ /* Obsolete as we use a slider */
+.btn {
+  position: absolute;
+  top : calc(50% - 30px);
+  height : 15px;
+  width : 15px;
+  border-left : solid 8px #696969;
+  border-top : solid 8px #696969;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 150ms ease-in;
+  opacity: 0.6;
+}
+
+ /* Obsolete as we use a slider */
+
+#leftArrow:hover {
+  transform: scale(1.2) rotate(-45deg);
+  opacity: 1;
+}
+
+ /* Obsolete as we use a slider */
+
+#rightArrow:hover {
+  transform: scale(1.2)  rotate(135deg);
+  opacity: 1;
+}
+
+ /* Obsolete as we use a slider */
+
+.btn.inactive {
+  border-color : #282828;
+}
+
+ /* Obsolete as we use a slider */
+
+.btn:first-of-type {
+  transform: rotate(-45deg);
+  left : calc(50vw - calc(100px + 4vw) - 40px);
+  display: none;
+}
+
+ /* Obsolete as we use a slider */
+
+.btn:last-of-type {
+  transform: rotate(135deg);
+  right : calc(50vw - calc(100px + 4vw) - 40px);
 }
 
 .mainCard {
@@ -276,3 +291,4 @@ h1 {
     opacity: 0.8;
   }
 }
+
