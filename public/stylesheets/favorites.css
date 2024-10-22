@@ -261,6 +261,7 @@ main {
 
   #card-scrollable {
     justify-content: center;
+    max-height: none;
   }
 
   #display-card {

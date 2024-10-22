@@ -40,8 +40,6 @@ html
     h1 Search Results
     if results && results.length > 0
       #cardsScrollerCont
-        //- span(onclick="slideLeft(this)" class = "btn")#leftArrow
-        //- span(onclick="slideRight(this)" class = "btn")#rightArrow
         #cardsScroller
             each game in results
               .cards(data-name=game.name)

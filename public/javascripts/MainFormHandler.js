@@ -58,7 +58,6 @@ function saveParameters() {
 
 form.addEventListener("submit", (e)=> {
   e.preventDefault();
-  console.log("submit");
   let conditions = true;
   const numberREGEX = /^\d+$/;
   const shake = [
@@ -101,7 +100,6 @@ form.addEventListener("submit", (e)=> {
     const formData = new FormData();
     formData.append('duration', time);
     formData.append('genre', genre);
-    console.log(time, genre);
     window.location.href = `/search?duration=${time}&genre=${genre}&varia=${variations/100}&nb=${maxGames}`;
     
   }

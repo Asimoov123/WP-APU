@@ -40,14 +40,10 @@ Array.from(cards).forEach(card => {
     .then(data => {
       if (data.found) {
         card.querySelector(".likeButton").checked = true;
-        console.log("found in library");
-      } else {
-        console.log("not found");
       }
     })
     .catch((error) => {
-      console.error('Error:', error);
-      console.log("Erro when fetching fav for :", gamename);
+      console.log("Error when fetching favorites for :", gamename);
     });
   }
 
@@ -76,7 +72,7 @@ Array.from(cards).forEach(card => {
        if (artworkElement && data.artworksUrl) {
          artworkElement.style.backgroundImage = `url(${modifyImageUrl(data.artworksUrl)})`;
        } else if (artworkElement) {
-         console.log("no-image");
+         console.log("No-image");
        }
      } else {
        console.error("Failed to retrieve game details:", data.message);
@@ -126,9 +122,6 @@ Array.from(likeButtons).forEach(liked => {
           body: JSON.stringify({ name: name, cover: cover, story: story, lifetime: lifetime, developper: developper, sales: sales, genre: genre, year: year }),
         })
         .then(response => response.json())
-        .then(data => {
-          console.log(data.executed);
-        })
         .catch(error => {
           console.error('There was a problem with the fetch operation:', error);
         });
@@ -151,59 +144,6 @@ Array.from(likeButtons).forEach(liked => {
   }
 });
 
-// Function for the slider
-
-// let pos = 0;
-
-// function updateCarouselPosition() {
-//   const cardWidth = parseFloat(getComputedStyle(cards[pos]).width); 
-//   const cardMargin = window.innerWidth * 0.05;
-
-//   const offset = pos * (cardWidth + 2 * cardMargin);
-//   const translateX = `calc(50% - (${cardWidth}px / 2 + ${cardMargin}px) - ${offset}px)`;
-
-//   scroller.style.transform = `translateX(${translateX})`;
-// }
-
-// window.addEventListener("resize", ()=> {
-//   updateCarouselPosition();
-// })
-
-// function slideRight() {
-//   if (pos < Array.from(cards).length - 1) {
-//     cards[pos].classList.remove('mainCard'); 
-//     pos += 1;
-//     updateCarouselPosition(); 
-//     cards[pos].classList.add('mainCard'); 
-//   }
-//   if (pos == Array.from(cards).length - 1) {
-//     document.getElementById("rightArrow").style.display = "none";
-//     if (Array.from(cards).length == 2) {
-//       document.getElementById("leftArrow").style.display = "block";
-//     }
-//   } else {
-//     document.getElementById("leftArrow").style.display = "block";
-//   }
-// }
-
-// function slideLeft() {
-//   if (pos > 0) {
-//     cards[pos].classList.remove('mainCard'); 
-//     pos -= 1;
-//     updateCarouselPosition(); 
-//     cards[pos].classList.add('mainCard');
-//   }
-//   console.log("hey");
-//   if (pos == 0) {
-//     document.getElementById("leftArrow").style.display = "none";
-//     if (Array.from(cards).length == 2) {
-//       document.getElementById("rightArrow").style.display = "block";
-//     }
-//   } else {
-//     document.getElementById("rightArrow").style.display = "block";
-//   }
-// }
-
 carousel.addEventListener('scroll', () => {
   let currentSnappedItem = null;
   let minDistance = Infinity;
@@ -212,7 +152,6 @@ carousel.addEventListener('scroll', () => {
     const rect = item.getBoundingClientRect();
     const carouselRect = carousel.getBoundingClientRect();
 
-    // Calculate the distance from the center of the carousel
     const itemCenter = rect.left + rect.width / 2;
     const carouselCenter = carouselRect.left + carouselRect.width / 2;
 
@@ -225,8 +164,6 @@ carousel.addEventListener('scroll', () => {
   });
 
   if (currentSnappedItem) {
-    console.log('Snapped element:', currentSnappedItem);
-    // Add 'active' class to the snapped element and remove it from others
     items.forEach(item => item.classList.remove('mainCard'));
     currentSnappedItem.classList.add('mainCard');
   }

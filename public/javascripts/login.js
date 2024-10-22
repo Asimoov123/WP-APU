@@ -339,7 +339,6 @@ function searchUser() {
   })
   .then(response => response.json()
   .then(data => {
-    console.log("return to frontend");
     document.getElementById('resultsContainer').innerHTML="";
     if(data.success) {
       Array.from(data.u_list).forEach(item => {
@@ -351,7 +350,6 @@ function searchUser() {
 
 
 function createItemElement(data) {
-  console.log(data);
 
   const searchItemDiv = document.createElement('div');
   searchItemDiv.classList.add('search-items');

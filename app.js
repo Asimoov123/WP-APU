@@ -173,7 +173,6 @@ app.get('/profile', (req, res) => {
       }
     })
   } else {
-    console.log("user id is null");
     res.render("profile", {user : user_id});
   }
 });
@@ -275,10 +274,10 @@ app.post("/checkfav", (req, res) => {
   db.query(query, [user_id, name], (err, results)=> {
     if (err) throw err;
     if (results.length > 0) {
-      console.log("success : "+name);
+      console.log("Success : "+name);
       return res.status(200).json({ found: true });
     } else {
-      console.log("fail : "+name);
+      console.log("Fail : "+name);
       res.status(200).json({ found: false });
     }
   });
@@ -307,7 +306,7 @@ app.post("/signup", (req, res) => {
           });
         });
       } else {
-        console.log("user already exist");
+        console.log("User already exist");
         return res.status(401).json({ success: false, name : true, surname : true, mail : false});
       }
     });
@@ -345,12 +344,12 @@ app.post("/login", (req, res)=> {
             return res.status(200).json({ success: true, mail : true, password : true});
           });
         } else {
-          console.log("password don't match");
+          console.log("Passwords don't match");
           return res.status(404).json({ success: false, mail : true, password : false});
         }
       });
     } else {
-      console.log("user not found");
+      console.log("User not found");
       return res.status(404).json({ success: false, mail : false, password : false});
     }
   });

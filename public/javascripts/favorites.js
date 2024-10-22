@@ -25,9 +25,7 @@ function toggleEdit() {
             },
           })
           .then(response => {
-            console.log("Response status:", response.status); 
             if (response.ok) {
-              console.log("Favorite removed");
               location.reload();
               let cardDeleteButton = document.getElementsByClassName("deleteButton");
               Array.from(cardDeleteButton).forEach(button => {
@@ -51,7 +49,6 @@ function toggleEdit() {
     editable = 1;
     editIcon.style.display = "none";
     trashIcon.style.display = "block";
-    console.log("edit");
   }
   
   
@@ -92,10 +89,8 @@ Array.from(cards).forEach(card => {
       let cardDeleteButton = card.querySelector(".deleteButton");
       if (cardDeleteButton.checked) {
         card.classList.add("selected");
-        console.log("selected");
       } else {
         card.classList.remove("selected");
-        console.log("deselected");
       }
     }
   })
