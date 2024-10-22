@@ -45,6 +45,7 @@ html
         #cardsScroller
             each game in results
               .cards(data-name=game.name)
+                .loadingCont
                 .TL-cont 
                   .likeButtonCont
                     input(type="checkbox").likeButton

@@ -61,6 +61,34 @@ h1 {
   scroll-snap-stop: always;
 }
 
+.loadingCont {
+  position: absolute;
+  z-index: 2;
+  height : 72px;
+  width : 72px;
+  background: url("../images/dash.png");
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top : calc(50% - 36px);
+  left : calc(50% - 36px);
+  animation: dash 0.4s steps(6) infinite;
+  transition: opacity 150ms ease-in;
+}
+
+.mainCard:hover .loadingCont{
+  opacity : 0;
+}
+
+@keyframes dash {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -432px 0;
+  }
+}
+
  /* Obsolete as we use a slider */
 .btn {
   position: absolute;
@@ -188,7 +216,7 @@ h1 {
 }
 
 .card-img-container {
-  background-image: url("../images/No_Cover.png");
+  background-color: rgb(26 26 26);
   background-size:cover;
   background-repeat: no-repeat;
   height : 100%;

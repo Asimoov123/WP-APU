@@ -64,6 +64,10 @@ Array.from(cards).forEach(card => {
      if (data.success) {
        const storylineElement = card.querySelector('.storyline');
        const artworkElement = card.querySelector('.card-img-container');
+       const loader = card.querySelector(".loadingCont");
+
+       loader.style.animation = "none";
+       loader.style.display = "none";
 
        if (storylineElement) {
          storylineElement.innerText = data.storyline || 'No storyline available';
