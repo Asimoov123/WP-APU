@@ -1,10 +1,12 @@
 doctype html
 html
   head
-    title Profile
+    title WSIP - Profile
     meta(name="viewport", content="width=device-width, initial-scale=1.0 minimum-scale=1.0")
+    link(rel="icon" type="image/x-icon" href="/images/dashSenaIco.png")
     link(rel="stylesheet" href="/stylesheets/global.css")
     link(rel="stylesheet" href="/stylesheets/login.css")
+    link(rel="stylesheet" href="/stylesheets/profile.css")
   body
     header(data-loggedStatus=user && user.length > 0 ? 'true' : 'false')
       if !user || user.length === 0
@@ -61,7 +63,7 @@ html
         .pageContainer
           img(src = "./images/HappyDinoViolet.png").happyDino
           img(src = "./images/HappyDinoViolet.png").happyDino
-          h1 My_account
+          h1 Profile
           #userData
             svg#edit-icon(height='24px' viewbox='0 -960 960 960' width='24px' fill='currentColor' onclick = "toggleEditUser()")
               path(d='M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z')
@@ -85,4 +87,4 @@ html
             p#saveButton(onclick = "saveData()") Save
           a.signOut(href = "/signout" ) Sign out
           a#deleteButton(onclick = "deleteAccountUser()") Delete Account
-  script(src = "./javascripts/login.js")
+  script(src = "./javascripts/user.js")

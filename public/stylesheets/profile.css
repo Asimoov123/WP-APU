@@ -1,0 +1,448 @@
+#overlay h1 {
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+.pageContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pageContainer h1 {
+    font-size: calc(1.5rem + 1.25vw);
+    margin-bottom: 40px;
+}
+
+.signOut {
+    margin-top: 20px;
+    padding: 15px 20px;
+    color: rgb(148 58 170) !important;
+    border: 1px solid rgb(148 58 170);
+    border-radius: 20px;
+    transition: all 150ms ease-in;
+}
+
+.signOut:hover {
+    cursor: pointer;
+    color: black !important;
+    transform: scale(1.1);
+    background-color: rgb(148 58 170);
+}
+
+#deleteButton {
+    position: absolute;
+    bottom: 60px;
+    padding: 15px 20px;
+    color: rgb(171, 1, 1) !important;
+    border: 1px solid rgb(173, 1, 1);
+    border-radius: 20px;
+    transition: all 150ms ease-in;
+}
+
+#deleteButton:hover {
+    cursor: pointer;
+    color: black !important;
+    transform: scale(1.1);
+    background-color: rgb(171, 1, 1);
+}
+
+#userData {
+    position: relative;
+    min-width: 250px;
+    padding: 30px 40px 10px 40px;
+    background-color: rgb(8, 2, 13);
+    border-radius: 20px;
+    border: 1px solid rgb(69 25 136);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: whitesmoke;
+    font-size: calc(0.8rem + 0.2vw);
+}
+
+#edit-icon {
+    position: absolute;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    color: rgb(88, 73, 88);
+    transition: all 150ms ease-in;
+}
+
+#edit-icon:hover {
+    transform: scale(1.1);
+    color: rgb(148 58 170);
+    cursor: pointer;
+}
+
+#userIdentityCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 295px;
+    width: 100%;
+}
+
+#userIdentityCont p {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    text-wrap: nowrap;
+}
+
+#userLogsCont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.userRows {
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    display: none;
+}
+
+.userBlock {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.userBlock:nth-child(2) {
+    margin-left: 10px;
+}
+
+.userBlock p {
+    margin: 0 5px 0 0;
+}
+
+#saveButton {
+    background-color: rgb(148 58 170);
+    border-radius: 15px;
+    padding: 8px 12px;
+    transition: all 150ms ease-in;
+    display: none;
+}
+
+#saveButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#userData label {
+    font-size: calc(0.8rem + 0.2vw);
+}
+
+#userLogsCont input[type="password"],
+#userIdentityCont input[type="text"] {
+    height: 35px;
+    border-radius: 10px;
+}
+
+#nameUserInput,
+#surnameUserInput {
+    max-width: 80px;
+    display: none;
+}
+
+.happyDino {
+    position: absolute;
+    height: 80%;
+    image-rendering: pixelated;
+    transform: scaleX(-1);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.happyDino:first-child {
+    transform: scaleX(-1) translateX(85%);
+}
+
+.happyDino:nth-child(2) {
+    transform: scaleX(-1) translateX(-85%);
+}
+
+#adminData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    width: 60vw;
+}
+
+#widgetCol {
+    height: 100%;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    max-width: 120px;
+}
+
+#searchCol {
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    width: 70%;
+    max-width: 520px;
+}
+
+#searchBar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 15px;
+    border: solid 1px rgb(30, 30, 30);
+    border-radius: 20px;
+    transition: all 150ms ease-in;
+    box-shadow: none;
+}
+
+#searchInput {
+    border-radius: 20px 0 0 20px;
+}
+
+#searchInput,
+#searchInput:hover,
+#searchInput:focus {
+    border: none;
+}
+
+#searchBar:hover {
+    border: solid 1px rgb(93 24 133);
+}
+
+#searchBar:has(#searchInput:focus) {
+    border: solid 1px rgb(93 24 133);
+    box-shadow: 0 0 10px rgb(93 24 133);
+}
+
+#searchBar input:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+#search-icon {
+    background-color: rgb(26 26 26);
+    height: 100%;
+    padding: 0 10px 0 7px;
+    border-radius: 0 20px 20px 0;
+    color: rgb(133 133 133);
+    transition: all 150ms ease-in;
+}
+
+#search-icon:hover {
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+#resultsContainer {
+    height: 390px;
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 0 5px;
+    width: 100%;
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 70px);
+    display: flex;
+    justify-content: start;
+    overflow: scroll;
+    border: 2px solid rgb(30, 30, 30);
+    border-radius: 20px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: start;
+}
+
+#resultsContainer p {
+    margin-left: 10px;
+    font-size: calc(0.6rem + 0.4vw);
+}
+
+.search-items {
+    min-height: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px 0 10px 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding-right: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.trash-icon {
+    aspect-ratio: 1/1;
+    height: 20px;
+    transition: all 150ms ease-in;
+    color: rgb(120, 0, 0);
+}
+
+.trash-icon:hover {
+    transform: scale(1.1);
+    color: rgb(202, 4, 4);
+    cursor: pointer;
+}
+
+.search-items:nth-child(even) {
+    background-color: rgb(51, 51, 51);
+}
+
+.search-items:nth-child(odd) {
+    background-color: rgb(28, 28, 28);
+}
+
+.widget {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: rgb(26 26 26);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* .widget:nth-child(2) {
+    margin: 10px 0;
+  } */
+
+.widget p {
+    margin: 0;
+    font-size: calc(0.5rem + 0.5vw);
+}
+
+.variable {
+    font-size: 3rem !important;
+    font-weight: 800;
+}
+
+.widget:first-child .variable {
+    color: rgb(69 25 136);
+}
+
+.widget:nth-child(2) {
+    margin: 0 10px;
+}
+
+.widget:nth-child(2) .variable {
+    color: rgb(93 24 133);
+}
+
+.widget:nth-child(3) .variable {
+    color: rgb(152 65 174);
+}
+
+
+@media (max-width: 850px) {
+    #adminData {
+        flex-direction: column;
+        max-width: 450px;
+    }
+
+    #widgetCol {
+        flex-direction: row;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .variable {
+        font-size: calc(2rem + 1vw) !important;
+    }
+
+    #searchCol {
+        width: 100%;
+    }
+
+    #searchBar {
+        margin: 0;
+        width: 100%;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    #searchIcon {
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    #userData {
+        padding: 15px 20px 5px 20px;
+      }
+    
+      #edit-icon {
+        top : calc(50% - 10px);
+      }
+    
+}
+
+@media (max-width: 600px) {
+    #adminData {
+        width: 80vw;
+    }
+    .variable {
+        font-size: calc(1rem + 2vw) !important;
+    }
+
+    .widget {
+        width: 30%;
+    }
+}
+
+@media (max-width: 500px) {
+    #userData,
+    .editable #userIdentityCont,
+    .editable .userBlock,
+    .userRows,
+    .editable #userLogsCont {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .editable .userBlock {
+        margin-bottom: 15px;
+    }
+
+    .editable .userBlock p {
+        margin-bottom: 5px;
+    }
+
+    .editable #userMail {
+        margin: 0;
+    }
+
+    #userData {
+        padding: 15px 20px 5px 20px;
+    }
+
+    #edit-icon {
+        top: calc(50% - 10px);
+    }
+}
+
