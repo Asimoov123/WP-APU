@@ -287,7 +287,7 @@ app.post("/signup", (req, res) => {
   const mailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
   const nameRegex = /^[a-zA-Z]+$/;
   const {name, surname, mail , password} = req.body;
-  if (nameRegex.test(name) && mailRegex.test(mail)) {
+  if (nameRegex.test(name) && mailRegex.test(mail) && password!="") {
     let query = 'Select * FROM users WHERE email = ?';
     db.query(query, [mail], (err, results)=> {
       if (err) throw err;
@@ -301,16 +301,17 @@ app.post("/signup", (req, res) => {
             db.query(query, [mail], (err, result_id)=> {
               if (err) throw err;
               user_id = result_id[0].id;
-              return res.status(200).json({ success: true, name : true, surname : true, mail : true});
+              return res.status(200).json({ success: true, name : true, surname : true, mail : true, password : true});
             })
           });
         });
       } else {
         console.log("User already exist");
-        return res.status(401).json({ success: false, name : true, surname : true, mail : false});
+        return res.status(401).json({ success: false, name : true, surname : true, mail : false, password : true});
       }
     });
   } else {
+    let pwdStatus = true;
     let mailstatus = true;
     let namestatus = true;
     let surnamestatus = true;
@@ -323,8 +324,11 @@ app.post("/signup", (req, res) => {
     if (!mailRegex.test(mail)) {
       mailstatus = false;
     }
+    if (password == "") {
+      pwdStatus = false;
+    }
     console.log("Data doesn't match the db requirements");
-    return res.status(401).json({ success: false, name : namestatus, surname : surnamestatus, mail : mailstatus});
+    return res.status(401).json({ success: false, name : namestatus, surname : surnamestatus, mail : mailstatus, password : pwdStatus});
   }
 });
 

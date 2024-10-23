@@ -115,6 +115,7 @@ formSignup.addEventListener("submit", (e)=> {
   mail.style.backgroundColor = "rgb(26, 26, 26)";
   name.style.backgroundColor = "rgb(26, 26, 26)";
   surname.style.backgroundColor = "rgb(26, 26, 26)";
+  pwd.style.backgroundColor = "rgb(26, 26, 26)";
 
   const nameRegex = /^[a-zA-Z]+$/;
   
@@ -130,7 +131,7 @@ formSignup.addEventListener("submit", (e)=> {
     {transform: "translateX(0px)"}
   ];
 
-  if (mail.value == "" || !nameRegex.test(surname.value) || !nameRegex.test(name.value)) {
+  if (mail.value == "" || !nameRegex.test(surname.value) || !nameRegex.test(name.value) || pwd.value == "") {
     if (mail.value == "") {
       mail.style.backgroundColor = "rgb(105, 0, 0)";
       mail.animate(shake,{
@@ -148,6 +149,13 @@ formSignup.addEventListener("submit", (e)=> {
     if (!nameRegex.test(surname.value)) {
       surname.style.backgroundColor = "rgb(105, 0, 0)";
       surname.animate(shake,{
+        duration: 200, 
+        iterations: 1
+      });
+    }
+    if (pwd.value == "") {
+      pwd.style.backgroundColor = "rgb(105, 0, 0)";
+      pwd.animate(shake,{
         duration: 200, 
         iterations: 1
       });
@@ -191,6 +199,13 @@ formSignup.addEventListener("submit", (e)=> {
           });
         }
 
+        if (!response.password) {
+          pwd.style.backgroundColor = "rgb(105, 0, 0)";
+          pwd.animate(shake,{
+            duration: 200, 
+            iterations: 1
+          });
+        }
       }
     }));
   }
