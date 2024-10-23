@@ -1,8 +1,8 @@
 
 // Will generate error when login
 let header = document.getElementsByTagName("header")[0];
-let formLogin= document.getElementById("loginForm");
-let formSignup= document.getElementById("signupForm");
+let formLogin = document.getElementById("loginForm");
+let formSignup = document.getElementById("signupForm");
 
 
 function sleep(time) {
@@ -13,28 +13,45 @@ function sleep(time) {
 const slider = document.getElementById("optionSlider");
 const main = document.getElementsByTagName("main")[0];
   
+document.getElementById("loginForm").style.display = "flex";
+document.getElementById("signupForm").style.display = "flex";
+
 
 function activateLogin() {
-  document.getElementById("loginForm").style.display = "flex";
-  document.getElementById("signupForm").style.display = "none";
+  document.getElementById("loginForm").style.opacity = "1";
+
+  document.getElementById("signupForm").style.opacity = "0";
+
   document.getElementById("login").classList.remove("active");
   document.getElementById("signup").classList.add("active");
   slider.style.left = "-1px"
+  main.style.borderRadius = "0px 20px 20px 20px";
+
   sleep(300)
   .then(()=> {
-    main.style.borderRadius = "0px 20px 20px 20px";
+    document.getElementById("loginForm").style.display = "flex";
+    document.getElementById("signupForm").style.display = "none";
+    // main.style.borderRadius = "0px 20px 20px 20px";
+    // main.style.height = "281px";
   });
 }
 
 function activateSignup() {
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("signupForm").style.display = "flex";
+  document.getElementById("loginForm").style.opacity = "0";
+  
+  document.getElementById("signupForm").style.opacity = "1";
+
   document.getElementById("login").classList.add("active");
   document.getElementById("signup").classList.remove("active");
   slider.style.left = "calc(50% - 1px)";
+  main.style.borderRadius = "20px 0px 20px 20px";
+
   sleep(300)
   .then(()=> {
-    main.style.borderRadius = "20px 0px 20px 20px";
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "flex";
+    // main.style.borderRadius = "20px 0px 20px 20px";
+    // main.style.height = "381.5px";
   });
 }
 
