@@ -145,6 +145,14 @@ app.get('/search', (req, res) => {
   }
 });
 
+app.get("/login", (req, res)=> {
+  if (user_id != null) {
+    res.redirect("/profile");
+  } else {
+    res.render("login");
+  }
+})
+
 app.get('/profile', (req, res) => {
   if (user_id != null) {
     let query = 'SELECT name, surname, role, email FROM users WHERE id = ?;';
@@ -173,7 +181,7 @@ app.get('/profile', (req, res) => {
       }
     })
   } else {
-    res.render("profile", {user : user_id});
+    res.redirect("login")
   }
 });
 

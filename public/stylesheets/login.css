@@ -17,6 +17,8 @@
 header {
   background-color: rgba(0,0,0,0);
   opacity: 1;
+  position: fixed;
+  z-index: 2;
 }
 
 #loginHeaderCont {
@@ -35,11 +37,6 @@ h1 {
   margin: 0;
   color: white;
   text-align: center;
-}
-
-header {
-  position: fixed;
-  z-index: 2;
 }
 
 form {
@@ -86,7 +83,6 @@ input:focus {
   backdrop-filter: blur(2px);
   z-index: 1;
   display: flex;
-  padding-top: 15%;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
@@ -301,7 +297,6 @@ label {
   position: relative;
   min-width: 250px;
   padding: 30px 40px 10px 40px;
-  position: relative;
   background-color: rgb(8, 2, 13);
   border-radius: 20px;
   border: 1px solid rgb(69 25 136);
@@ -356,7 +351,6 @@ label {
 }
 
 .userRows {
-  display :flex;
   justify-content: space-between;
   width: 100%;
   align-items: center;
@@ -512,11 +506,9 @@ label {
   max-height : calc(100% - 70px);
   display: flex;
   justify-content: start;
-  align-items: center;
   overflow: scroll;
   border : 2px solid rgb(30, 30, 30);
   border-radius: 20px;
-  display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: start;
@@ -575,9 +567,9 @@ label {
   flex-direction: column;
 }
 
-.widget:nth-child(2) {
+/* .widget:nth-child(2) {
   margin: 10px 0;
-}
+} */
 
 .widget p {
   margin: 0;

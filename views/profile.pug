@@ -24,95 +24,65 @@ html
                   696 -426 947 -177 176 -371 287 -601 344 -369 91 -738 24 -1038 -190 -161\
                   -114 -339 -312 -443 -491 -21 -37 -41 -68 -44 -68 -3 0 -23 31 -44 68 -104\
                   179 -282 377 -443 491 -90 64 -228 136 -318 166 -168 56 -405 77 -580 51z')
-    if !user || user.length === 0
-      #backgroundContainer
-        #slider
-          img(src = "./images/Background.png").bg_img
-          img(src = "./images/Background.png").bg_img
-      #overlay
-        main
-          #optionSlider
-          #textContainer 
-            p(onclick = "activateLogin()")#login Login 
-            p(onclick = "activateSignup()" class = "active")#signup Sign up
-          form(id = "loginForm")
-            .loginInputContainer
-              label(for = "mailInput") Mail :
-              input(type = "email" id = "mailLogin" name = "mail")
-              label(for = "passwordLogin") Password :
-              input(type = "password" id = "passwordLogin" name = "password")
-            input(type = "submit" id = "submitLogin" value = "Login")
-          form(action = "/signup" method = "post" id = "signupForm")
-            #topFormCont 
-              .topFormInput 
-                label(for = "nameInput") Name :
-                input(type = "text" id = "nameInput" name = "name")
-              .topFormInput 
-                label(for = "surnameInput") Surname :
-                input(type = "text" id = "surnameInput" name = "surname")
-            .loginInputContainer
-              label(for = "mailInput") Mail :
-              input(type = "email" id = "mailSignup" name = "mail")
-              label(for = "passwordLogin") Password :
-              input(type = "password" id = "passwordSignup" name = "password")
-            input(type = "submit" id = "submitSignup" value = "Sign up")
-    else if role && role === "admin"
-      .pageContainer
-        h1 Control_Panel
-        #adminData 
-          #widgetCol 
-            .widget 
-              p.variable #{game_c}
-              p games
-            .widget 
-              p.variable #{user_c}
-              p users
-            .widget 
-              p.variable #{fav_c}
-              p favorites
-          #searchCol
-            #searchBar 
-              input(type="text" placeholder = "Search...")#searchInput
-              svg#search-icon(height='24px' viewbox='0 -960 960 960' width='24px' fill='currentColor' onclick = "searchUser()")
-                path(d='M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z')
-            #resultsContainer
-              if u_list 
-                each results in u_list 
-                  .search-items 
-                    svg.trash-icon(x='0px' y='0px' width='26' height='26' viewbox='0 0 26 26' fill='currentColor' onclick = `deleteUserAdmin(${results.id})`)
-                      path(d='M 11 -0.03125 C 10.164063 -0.03125 9.34375 0.132813 8.75 0.71875 C 8.15625 1.304688 7.96875 2.136719 7.96875 3 L 4 3 C 3.449219 3 3 3.449219 3 4 L 2 4 L 2 6 L 24 6 L 24 4 L 23 4 C 23 3.449219 22.550781 3 22 3 L 18.03125 3 C 18.03125 2.136719 17.84375 1.304688 17.25 0.71875 C 16.65625 0.132813 15.835938 -0.03125 15 -0.03125 Z M 11 2.03125 L 15 2.03125 C 15.546875 2.03125 15.71875 2.160156 15.78125 2.21875 C 15.84375 2.277344 15.96875 2.441406 15.96875 3 L 10.03125 3 C 10.03125 2.441406 10.15625 2.277344 10.21875 2.21875 C 10.28125 2.160156 10.453125 2.03125 11 2.03125 Z M 4 7 L 4 23 C 4 24.652344 5.347656 26 7 26 L 19 26 C 20.652344 26 22 24.652344 22 23 L 22 7 Z M 8 10 L 10 10 L 10 22 L 8 22 Z M 12 10 L 14 10 L 14 22 L 12 22 Z M 16 10 L 18 10 L 18 22 L 16 22 Z')
-                    p Id : #{results.id}
-                    p Name : #{results.name}
-                    p Surname : #{results.surname}
-                    p Mail : #{results.email}
 
-        a.signOut(href = "/signout") Sign out
-    else
-      .pageContainer
-        img(src = "./images/HappyDinoViolet.png").happyDino
-        img(src = "./images/HappyDinoViolet.png").happyDino
-        h1 My_account
-        #userData
-          svg#edit-icon(height='24px' viewbox='0 -960 960 960' width='24px' fill='currentColor' onclick = "toggleEditUser()")
-            path(d='M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z')
-          #userIdentityCont
-            .userBlock
-              p name :
-              p#nameUser #{name}
-              input(type = "text" placeholder = "Name")#nameUserInput
-            .userBlock
-              p surname : 
-              p#surnameUser #{surname}
-              input(type = "text" placeholder = "Surname")#surnameUserInput
-          #userLogsCont
-            p#userMail mail : #{mail}
-            .userRows
-              label(for = "userpwd") new password
-              input(type = "password" id = "userpwd")
-            .userRows
-              label(for = "confirmUserPwd") confirm new password
-              input(type = "password" id = "confirmUserPwd")
-          p#saveButton(onclick = "saveData()") Save
-        a.signOut(href = "/signout" ) Sign out
-        a#deleteButton(onclick = "deleteAccountUser()") Delete Account
+    #overlay
+      if role && role === "admin"
+        .pageContainer
+          h1 Control_Panel
+          #adminData 
+            #widgetCol 
+              .widget 
+                p.variable #{game_c}
+                p games
+              .widget 
+                p.variable #{user_c}
+                p users
+              .widget 
+                p.variable #{fav_c}
+                p favorites
+            #searchCol
+              #searchBar 
+                input(type="text" placeholder = "Search...")#searchInput
+                svg#search-icon(height='24px' viewbox='0 -960 960 960' width='24px' fill='currentColor' onclick = "searchUser()")
+                  path(d='M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z')
+              #resultsContainer
+                if u_list 
+                  each results in u_list 
+                    .search-items 
+                      svg.trash-icon(x='0px' y='0px' width='26' height='26' viewbox='0 0 26 26' fill='currentColor' onclick = `deleteUserAdmin(${results.id})`)
+                        path(d='M 11 -0.03125 C 10.164063 -0.03125 9.34375 0.132813 8.75 0.71875 C 8.15625 1.304688 7.96875 2.136719 7.96875 3 L 4 3 C 3.449219 3 3 3.449219 3 4 L 2 4 L 2 6 L 24 6 L 24 4 L 23 4 C 23 3.449219 22.550781 3 22 3 L 18.03125 3 C 18.03125 2.136719 17.84375 1.304688 17.25 0.71875 C 16.65625 0.132813 15.835938 -0.03125 15 -0.03125 Z M 11 2.03125 L 15 2.03125 C 15.546875 2.03125 15.71875 2.160156 15.78125 2.21875 C 15.84375 2.277344 15.96875 2.441406 15.96875 3 L 10.03125 3 C 10.03125 2.441406 10.15625 2.277344 10.21875 2.21875 C 10.28125 2.160156 10.453125 2.03125 11 2.03125 Z M 4 7 L 4 23 C 4 24.652344 5.347656 26 7 26 L 19 26 C 20.652344 26 22 24.652344 22 23 L 22 7 Z M 8 10 L 10 10 L 10 22 L 8 22 Z M 12 10 L 14 10 L 14 22 L 12 22 Z M 16 10 L 18 10 L 18 22 L 16 22 Z')
+                      p Id : #{results.id}
+                      p Name : #{results.name}
+                      p Surname : #{results.surname}
+                      p Mail : #{results.email}
+
+          a.signOut(href = "/signout") Sign out
+      else
+        .pageContainer
+          img(src = "./images/HappyDinoViolet.png").happyDino
+          img(src = "./images/HappyDinoViolet.png").happyDino
+          h1 My_account
+          #userData
+            svg#edit-icon(height='24px' viewbox='0 -960 960 960' width='24px' fill='currentColor' onclick = "toggleEditUser()")
+              path(d='M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z')
+            #userIdentityCont
+              .userBlock
+                p name :
+                p#nameUser #{name}
+                input(type = "text" placeholder = "Name")#nameUserInput
+              .userBlock
+                p surname : 
+                p#surnameUser #{surname}
+                input(type = "text" placeholder = "Surname")#surnameUserInput
+            #userLogsCont
+              p#userMail mail : #{mail}
+              .userRows
+                label(for = "userpwd") new password
+                input(type = "password" id = "userpwd")
+              .userRows
+                label(for = "confirmUserPwd") confirm new password
+                input(type = "password" id = "confirmUserPwd")
+            p#saveButton(onclick = "saveData()") Save
+          a.signOut(href = "/signout" ) Sign out
+          a#deleteButton(onclick = "deleteAccountUser()") Delete Account
   script(src = "./javascripts/login.js")
