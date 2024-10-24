@@ -74,10 +74,11 @@ html(lang="en")
           input(type="submit", value = "Send")#submitMainform
         #advanced
           h2 Advanced Parameters
-          label(for = "select-results") How many games you wanna see :
+          label(for = "select-results") Max number of games to display :
           input(type = "text" placeholder = "max : 100")#select-results
-          label(for = "select-#select-timeVariation") What is the time allowance (%) :
+          label(for = "select-#select-timeVariation") Time Allowance (%) :
           input(type = "text" placeholder = "enter a %")#select-timeVariation
+          
   script(src="./javascripts/global.js")
   script(src = "./javascripts/MainFormHandler.js")
 
