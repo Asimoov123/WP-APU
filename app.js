@@ -123,25 +123,23 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-
 // Get events
 app.get("/search", (req, res) => {
   const { duration, genre, varia, nb } = req.query;
-
-  const parsedDuration = parseInt(duration, 10);
   const parsedVaria = parseFloat(varia);
   const parsedNb = parseInt(nb, 10);
+  const parsedDuration = parseInt(duration);
 
   if (genre != "ALL") {
     let query =
-      'SELECT * FROM wp_data WHERE Main_Story_Average_Minutes BETWEEN ? AND ? AND (genre = ?) ORDER BY critic_score DESC LIMIT ?;';
+      'SELECT * FROM wp_data WHERE (CAST(SUBSTRING_INDEX(Main_Story_Average, "h", 1) AS UNSIGNED) * 60 + CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(Main_Story_Average, "h", -1), "m", 1) AS UNSIGNED)) BETWEEN ? AND ? AND (genre = ?) ORDER BY critic_score DESC LIMIT ?;';
     db.query(
       query,
       [
-        parsedDuration - (parsedDuration * parsedVaria),
-        parsedDuration + (parsedDuration * parsedVaria),
+        parsedDuration - parsedDuration * parsedVaria,
+        parsedDuration + parsedDuration * parsedVaria,
         genre,
-        parsedNb
+        parsedNb,
       ],
       (err, results) => {
         if (err) throw err;
@@ -150,13 +148,13 @@ app.get("/search", (req, res) => {
     );
   } else {
     let query =
-      'SELECT * FROM wp_data WHERE Main_Story_Average_Minutes BETWEEN ? AND ? ORDER BY critic_score DESC LIMIT ?;';
+      'SELECT * FROM wp_data WHERE (CAST(SUBSTRING_INDEX(Main_Story_Average, "h", 1) AS UNSIGNED) * 60 + CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(Main_Story_Average, "h", -1), "m", 1) AS UNSIGNED)) BETWEEN ? AND ? ORDER BY critic_score DESC LIMIT ?;';
     db.query(
       query,
       [
-        parsedDuration - (parsedDuration * parsedVaria),
-        parsedDuration + (parsedDuration * parsedVaria),
-        parsedNb
+        parsedDuration - parsedDuration * parsedVaria,
+        parsedDuration + parsedDuration * parsedVaria,
+        parsedNb,
       ],
       (err, results) => {
         if (err) throw err;

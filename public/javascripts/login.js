@@ -10,7 +10,7 @@ function sleep(time) {
 }
 
 
-const slider = document.getElementById("optionSlider");
+const slider = document.getElementById("optionSlider"); // login / signup selector
 const main = document.getElementsByTagName("main")[0];
 
 
