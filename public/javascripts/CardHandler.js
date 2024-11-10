@@ -12,15 +12,6 @@ cards[0].classList.add("mainCard");
 
 
 
-// Function to adapt the IGDB url
-
-function modifyImageUrl(url) {
-  if (url.includes('t_thumb')) {
-      return url.replace('t_thumb', 't_cover_big');
-  }
-  return url;
-}
-
 
 // Loop on each card to add the event listener for the scroll reset and retrieve image and storyline from IGDB
 
@@ -70,7 +61,7 @@ Array.from(cards).forEach(card => {
        }
 
        if (artworkElement && data.artworksUrl) {
-         artworkElement.style.backgroundImage = `url(${modifyImageUrl(data.artworksUrl)})`;
+         artworkElement.style.backgroundImage = `url(${data.artworksUrl})`;
        } else if (artworkElement) {
          console.log("No-image");
        }
