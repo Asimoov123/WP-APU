@@ -1,0 +1,76 @@
+doctype html
+html
+  head
+    title WSIP - Quiz
+    meta(name="viewport", content="width=device-width, initial-scale=1.0 minimum-scale=1.0")
+    link(rel="icon" type="image/x-icon" href="/images/dashSenaIco.png")
+    link(rel="stylesheet" href="/stylesheets/global.css")
+    link(rel="stylesheet" href="/stylesheets/login.css")
+    link(rel="stylesheet" href="/stylesheets/profile.css")
+  body
+    header(data-loggedStatus=user && user.length > 0 ? 'true' : 'false')
+      #normalHeaderCont
+        a(href = "./")#homeButton what should i play 
+        #profileCont
+          a(href = "./library")#libraryButton
+            svg(viewbox='0 0 512.000000 512.000000')
+              g(transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)' fill='currentColor' stroke = 'currentColor')
+                path(d='M1175 4806 c-208 -31 -377 -96 -560 -215 -102 -66 -280 -247 -355\
+                -361 -267 -408 -332 -927 -173 -1400 95 -283 278 -563 584 -896 226 -246 438\
+                -439 1286 -1166 561 -483 556 -479 637 -464 19 4 49 19 68 34 69 55 1039 891\
+                1208 1041 584 517 880 857 1064 1220 147 290 205 583 178 889 -36 390 -173\
+                696 -426 947 -177 176 -371 287 -601 344 -369 91 -738 24 -1038 -190 -161\
+                -114 -339 -312 -443 -491 -21 -37 -41 -68 -44 -68 -3 0 -23 31 -44 68 -104\
+                179 -282 377 -443 491 -90 64 -228 136 -318 166 -168 56 -405 77 -580 51z')
+
+    h1 Quiz sur les jeux vidéo
+    form(action="/submitquiz" method="POST" style="color: white; margin-top: 50px;")
+        // Question 1
+        fieldset(style="margin-bottom: 20px;")
+            legend Question 1 : Dans quel jeu Mario apparaît-il pour la toute première fois ?
+            label
+                input(type="radio" name="question1" value="Super Mario Bros") 
+                | Super Mario Bros
+            label
+                input(type="radio" name="question1" value="Donkey Kong")
+                | Donkey Kong
+            label
+                input(type="radio" name="question1" value="Mario Kart")
+                | Mario Kart
+            label
+                input(type="radio" name="question1" value="Fast And Furious")
+                | Fast And Furious
+
+
+        // Question 2
+        fieldset(style="margin-bottom: 20px;")
+            legend Question 2 : Quel est le nom du célèbre jeu de construction et d'exploration composé de blocs ?
+            label
+                input(type="radio" name="question2" value="Minecraft")
+                | Minecraft
+            label
+                input(type="radio" name="question2" value="Terraria")
+                | Terraria
+            label
+                input(type="radio" name="question2" value="Roblox")
+                | Roblox
+
+        // Question 3
+        fieldset(style="margin-bottom: 20px;")
+            legend Question 3 : Dans la série *The Legend of Zelda*, quel est le nom du héros principal ?
+            label
+                input(type="radio" name="question3" value="Link")
+                | Link
+            label
+                input(type="radio" name="question3" value="Zelda")
+                | Zelda
+            label
+                input(type="radio" name="question3" value="Ganondorf")
+                | Ganondorf
+
+        // Submit button
+        button(type="submit") Envoyer mes réponses
+
+        if(result)
+            p Your result is #{Math.round(result)}%;
+    

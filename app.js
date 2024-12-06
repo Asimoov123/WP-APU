@@ -124,6 +124,28 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 // Get events
+
+app.get("/quiz", (req, res) => {
+  res.render("quiz");
+});
+
+app.post("/submitquiz", (req, res) => {
+  const { question1, question2, question3} = req.body;
+  let result = 0;
+  if (question1 == "Donkey Kong") {
+    result += 1;
+  }
+  if (question2 == "Minecraft") {
+    result += 1;
+  }
+  if (question3 == "Link") {
+    result += 1;
+  }
+
+  res.render("quiz", {result: result/3 * 100});
+});
+
+
 app.get("/search", (req, res) => {
   const { duration, genre, varia, nb } = req.query;
   const parsedVaria = parseFloat(varia);
