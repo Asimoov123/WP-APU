@@ -110,6 +110,13 @@ async function getGameDetails(accessToken, gameId) {
   return data;
 }
 
+function modifyImageUrl(url) {
+  if (url.includes('t_thumb')) {
+      return url.replace('t_thumb', 't_cover_big');
+  }
+  return url;
+}
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -294,47 +301,69 @@ app.post("/retrieveInfos", (req, res) => {
     });
   }
 
-  searchGameByName(accessToken, name)
-    .then((gameId) => {
-      if (!gameId) {
-        return res.status(404).json({
-          success: false,
-          message: "Game not found",
+  let query = "SELECT cover_url, story  FROM wp_data where name = ?;";
+  db.query(query, [name], (err, results)=> {
+    if (results[0].cover_url != null && results[0].cover_url != "") {
+      let query = "SELECT story, cover_url FROM wp_data WHERE name = ?;";
+      db.query(query, [name], (err, results)=> {
+        if (err) throw err;
+        console.log("Already in db");
+        return res.status(200).json({
+          success: true,
+          storyline: results[0].story,
+          artworksUrl: results[0].cover_url,
+          message: `Game details retrieved successfully for ${name}`,
         });
-      }
-
-      return getGameDetails(accessToken, gameId).then((gameDetails) => {
-        if (!gameDetails || gameDetails.length === 0) {
+      })
+    } else {
+      searchGameByName(accessToken, name)
+      .then((gameId) => {
+        if (!gameId) {
           return res.status(404).json({
             success: false,
-            message: "Game details not found",
+            message: "Game not found",
           });
         }
 
-        const details = gameDetails[0];
+        return getGameDetails(accessToken, gameId).then((gameDetails) => {
+          if (!gameDetails || gameDetails.length === 0) {
+            return res.status(404).json({
+              success: false,
+              message: "Game details not found",
+            });
+          }
 
-        let artworksUrl = null;
-        if (details.cover && details.cover.url) {
-          artworksUrl = `https:${details.cover.url}`;
-        } else {
-          artworksUrl = ``;
-        }
+          const details = gameDetails[0];
 
-        return res.status(200).json({
-          success: true,
-          storyline: details.storyline,
-          artworksUrl: artworksUrl || "No artwork available",
-          message: `Game details retrieved successfully for ${name}`,
+          let artworksUrl = null;
+          if (details.cover && details.cover.url) {
+            artworksUrl = `https:${details.cover.url}`;
+          } else {
+            artworksUrl = ``;
+          }
+          let updateQuery = "UPDATE wp_data SET cover_url = ?, story = ? WHERE name = ?;";
+          db.query(updateQuery, [modifyImageUrl(artworksUrl), details.storyline, name], (err, results)=> {
+            if (err) throw err;
+            console.log("Game details updated");
+          })
+
+          return res.status(200).json({
+            success: true,
+            storyline: details.storyline,
+            artworksUrl: modifyImageUrl(artworksUrl) || "No artwork available",
+            message: `Game details retrieved successfully for ${name}`,
+          });
+        });
+      })
+      .catch((error) => {
+        console.error("Error during the request:", error);
+        return res.status(500).json({
+          success: false,
+          message: "An error occurred while retrieving game information",
         });
       });
-    })
-    .catch((error) => {
-      console.error("Error during the request:", error);
-      return res.status(500).json({
-        success: false,
-        message: "An error occurred while retrieving game information",
-      });
-    });
+    }
+  });
 });
 
 app.post("/checkfav", (req, res) => {
