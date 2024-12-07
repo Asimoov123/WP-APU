@@ -5,9 +5,8 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1.0 minimum-scale=1.0")
     link(rel="icon" type="image/x-icon" href="/images/dashSenaIco.png")
     link(rel="stylesheet" href="/stylesheets/global.css")
-    link(rel="stylesheet" href="/stylesheets/login.css")
-    link(rel="stylesheet" href="/stylesheets/profile.css")
-  body
+    link(rel="stylesheet" href="/stylesheets/quiz.css")
+  body(style="background-color: black")
     header 
       a(href = "./")#homeButton what should i play 
       #profileCont 
@@ -39,56 +38,60 @@ html
               430 1060 473 52 6 110 13 129 15 67 8 345 -4 442 -19z')
         a(href = "./profile")#loginButton Login / Sign up
 
-    h1(style="margin-top:0px; padding-top:50px") Video Game Quiz
+    h1(style="color: white; margin-top:0px; padding-top:50px") Video Game Quiz
     form(action="/submitquiz" method="POST" style="color: white; padding-top:20px")
         // Question 1
         fieldset(style="margin-bottom: 20px;")
-            legend Question 1 : Dans quel jeu Mario apparaît-il pour la toute première fois ?
-            label
-                input(type="radio" name="question1" value="Super Mario Bros") 
-                | Super Mario Bros
-            label
-                input(type="radio" name="question1" value="Donkey Kong")
-                | Donkey Kong
-            label
-                input(type="radio" name="question1" value="Mario Kart")
-                | Mario Kart
-            label
-                input(type="radio" name="question1" value="Fast And Furious")
-                | Fast And Furious
+            legend Question 1 : In which game does Mario first appear ?
+            .radio-input
+                label
+                    input(type="radio" name="question1" value="Super Mario Bros") 
+                    | Super Mario Bros
+                label
+                    input(type="radio" name="question1" value="Donkey Kong")
+                    | Donkey Kong
+                label
+                    input(type="radio" name="question1" value="Mario Kart")
+                    | Mario Kart
+                label
+                    input(type="radio" name="question1" value="Fast And Furious")
+                    | Fast And Furious
 
 
         // Question 2
         fieldset(style="margin-bottom: 20px;")
-            legend Question 2 : Quel est le nom du célèbre jeu de construction et d'exploration composé de blocs ?
-            label
-                input(type="radio" name="question2" value="Minecraft")
-                | Minecraft
-            label
-                input(type="radio" name="question2" value="Terraria")
-                | Terraria
-            label
-                input(type="radio" name="question2" value="Roblox")
-                | Roblox
+            legend Question 2: What's the name of the famous building and exploration game made of blocks ?
+            .radio-input
+                label
+                    input(type="radio" name="question2" value="Minecraft")
+                    | Minecraft
+                label
+                    input(type="radio" name="question2" value="Terraria")
+                    | Terraria
+                label
+                    input(type="radio" name="question2" value="Roblox")
+                    | Roblox
 
         // Question 3
         fieldset(style="margin-bottom: 20px;")
-            legend Question 3 : Dans la série *The Legend of Zelda*, quel est le nom du héros principal ?
-            label
-                input(type="radio" name="question3" value="Link")
-                | Link
-            label
-                input(type="radio" name="question3" value="Zelda")
-                | Zelda
-            label
-                input(type="radio" name="question3" value="Ganondorf")
-                | Ganondorf
+            legend Question 3: In The Legend of Zelda series, what is the name of the main hero ?
+            .radio-input
+                label
+                    input(type="radio" name="question3" value="Link")
+                    | Link
+                label
+                    input(type="radio" name="question3" value="Zelda")
+                    | Zelda
+                label
+                    input(type="radio" name="question3" value="Ganondorf")
+                    | Ganondorf
 
         // Submit button
         button(type="submit") Envoyer mes réponses
 
-        if(result)
-            p Your result is #{Math.round(result)}%;
+        if(result != null)
+            p(style="color:white") Your result is #{result}%; 
+        
 
     script(src="./javascripts/global.js")
 

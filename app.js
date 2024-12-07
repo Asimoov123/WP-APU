@@ -142,7 +142,7 @@ app.post("/submitquiz", (req, res) => {
     result += 1;
   }
 
-  res.render("quiz", {result: result/3 * 100});
+  res.render("quiz", {result: Math.round(result/3 * 100)});
 });
 
 
