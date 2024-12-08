@@ -539,7 +539,7 @@ app.post("/searchUser", (req, res) => {
     searchString = "";
     query = "SELECT id, name, surname, email FROM users LIMIT 10;";
   } else {
-    searchString = `%${search}`;
+    searchString = `%${search}%`;
     query = "SELECT id, name, surname, email FROM users WHERE name LIKE ?;";
   }
   db.query(query, [searchString], (err, results) => {
